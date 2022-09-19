@@ -5,6 +5,11 @@ namespace HallOfFame.Model
     public class ModelContext : DbContext
     {
         /// <summary>
+        /// Строка подключения к БД
+        /// </summary>
+        private string ConnectionStrings = "Server=DESKTOP-AM8V2BP;Database=NSTDB;Trusted_Connection=True;";
+
+        /// <summary>
         /// Сотрудники
         /// </summary>
         public DbSet<Person> Person { get; set; }
@@ -17,6 +22,17 @@ namespace HallOfFame.Model
         public ModelContext()
         {
 
+        }
+
+        /// <summary>
+        /// Подключение к БД
+        /// </summary>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(ConnectionStrings);
+            }
         }
 
         public ModelContext(DbContextOptions<ModelContext> options) : base(options)

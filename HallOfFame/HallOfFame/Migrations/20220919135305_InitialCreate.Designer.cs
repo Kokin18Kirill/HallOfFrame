@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HallOfFame.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20220919071028_InitialCreate")]
+    [Migration("20220919135305_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

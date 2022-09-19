@@ -67,7 +67,10 @@ namespace HallOfFame.Controllers
             try
             {
                 await ModelContext.GetContext().Person.AddAsync(newPerson);
-                ModelContext.GetContext().UpdateRange(newPerson.Skills);
+                if (newPerson.Skills != null)
+                {
+                    ModelContext.GetContext().UpdateRange(newPerson.Skills);
+                }       
                 await ModelContext.GetContext().SaveChangesAsync();
 
                 return Ok(newPerson);

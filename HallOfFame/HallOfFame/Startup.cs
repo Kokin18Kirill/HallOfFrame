@@ -22,7 +22,7 @@ namespace HallOfFame
         {
             //подключение к базе данных
             services.AddDbContext<ModelContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
