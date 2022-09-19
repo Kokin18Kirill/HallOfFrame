@@ -1,34 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HallOfFame.Model
 {
     public class ModelContext : DbContext
     {
+        /// <summary>
+        /// Сотрудники
+        /// </summary>
         public DbSet<Person> Person { get; set; }
+
+        /// <summary>
+        /// Навыки
+        /// </summary>
         public DbSet<Skill> Skill { get; set; }
+
         public ModelContext()
         {
 
         }
+
         public ModelContext(DbContextOptions<ModelContext> options) : base(options)
         {
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-AM8V2BP;Database=NSTDB;Trusted_Connection=True;");
-            }
-        }
 
         private static ModelContext context;
+
+        /// <summary>
+        /// Получение контекста БД
+        /// </summary>
         public static ModelContext GetContext()
         {
             if (context == null)
